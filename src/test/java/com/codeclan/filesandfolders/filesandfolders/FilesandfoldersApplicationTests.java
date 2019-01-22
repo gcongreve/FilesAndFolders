@@ -2,8 +2,10 @@ package com.codeclan.filesandfolders.filesandfolders;
 
 import com.codeclan.filesandfolders.filesandfolders.models.File;
 import com.codeclan.filesandfolders.filesandfolders.models.Folder;
+import com.codeclan.filesandfolders.filesandfolders.models.User;
 import com.codeclan.filesandfolders.filesandfolders.repositories.FileRepository;
 import com.codeclan.filesandfolders.filesandfolders.repositories.FolderRepository;
+import com.codeclan.filesandfolders.filesandfolders.repositories.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,18 +23,33 @@ public class FilesandfoldersApplicationTests {
 	@Autowired
 	FolderRepository folderRepository;
 
+	@Autowired
+	UserRepository userRepository;
+
 	@Test
 	public void contextLoads() {
 	}
 
 
+//	@Test
+//	public void canAddFilesAndFolders(){
+//		Folder folder = new Folder("Big Folder");
+//		File file = new File("file", ".xml", 59, folder);
+//		folderRepository.save(folder);
+//		fileRepository.save(file);
+//	}
+
 	@Test
-	public void canAddFilesAndFolders(){
-		Folder folder = new Folder("Big Folder");
+	public void canAddFilesAndFoldersAndUsers(){
+		User user = new User("Mr User");
+		Folder folder = new Folder("Big Folder", user);
 		File file = new File("file", ".xml", 59, folder);
+		userRepository.save(user);
 		folderRepository.save(folder);
 		fileRepository.save(file);
 	}
+
+
 
 }
 
